@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS DOM EVENT</title>
+</head>
+
+<body>
+    <section>
+        <h1 onclick="console.log('I am clicked')">DOM special Events.</h1>
+        <button onclick="console.log(7)">Click Me</button>
+        <button onclick="console.log(65)">Another Button</button>
+        <br>
+        <!-- option 1 -->
+        <button onclick="document.body.style.backgroundColor='crimson'">Make Crimson</button>
+        <!-- option 2 -->
+        <button onclick="makeSkyBlue()">Make SkyBlue</button>
+        <br>
+        <!-- option 3 -->
+        <button id="make-purple">Make Purple</button>
+        <button id="make-magenta">Make Magenta</button>
+        <!-- option 4 -->
+        <button id="make-green">Make Green</button>
+        <button id="make-antiquewhite">Make Antiquewhite</button>
+        <button id="make-goldenrod">Make Goldenrod</button>
+    </section>
+
+    <section>
+        <h1>Final DOM Event Handler</h1>
+        <h3 id="handler-status"> Default Text</h3>
+        <p id="input-text">Default input text</p>
+        <input id="input-field" type="text">
+        <button id="btn-update">Update</button>
+        <br><br>
+        <button onclick="handleOnclick()">Handle Event by Add onclick Function</button>
+        <button id="event-listener">Handle Event by addEventListener</button>
+    </section>
+
+    <script src="js/events.js"></script>
+    <script>
+        function handleOnclick() {
+            const handlerStatus = document.getElementById('handler-status');
+            handlerStatus.innerText = 'Handled by function attached on click attribute'
+        }
+
+        // Option 2
+        document.getElementById('event-listener').addEventListener('click', function () {
+            const handlerStatus = document.getElementById('handler-status');
+            handlerStatus.innerText = 'Text Updated by addEventListener Button'
+        })
+
+        //Option 2 recap
+        document.getElementById('btn-update').addEventListener('click', function () {
+            const inputField = document.getElementById('input-field');
+            const inputText = inputField.value;
+
+            const p = document.getElementById('input-text');
+            p.innerText = inputText;
+            inputField.value = '';
+        })
+    </script>
+</body>
+
+</html>
